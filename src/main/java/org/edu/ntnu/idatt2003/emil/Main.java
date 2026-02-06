@@ -11,7 +11,7 @@ public class Main {
 
     String textWrap = "text to be wrapped";
     TextCommand wrapText = new WrapTextCommand("<p>", "</p>");
-    String textWrapLines = "first line\\nsecond line\\nthird line";
+    String textWrapLines = "first line\nsecond line\nthird line";
     WrapTextCommand wrapLinesText = new WrapLinesTextCommand("<p>", "</p>");
     String textWrapSelection = "text with selection";
     WrapTextCommand wrapSelectionText = new WrapSelectionTextCommand("<p>", "</p>", "selection");

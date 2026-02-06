@@ -10,18 +10,7 @@ public class WrapSelectionTextCommand extends WrapTextCommand {
 
   @Override
   public String execute(String text) {
-    System.out.println(text.indexOf(selection));
-    System.out.println(text.substring(text.indexOf(selection), text.indexOf(selection) + selection.length()));
-    String[] lines = text.split("\\\\n");
-    String wrappedLines = "";
-    for(int i = 0; i < lines.length; i++) {
-      if (i == lines.length-1) {
-        wrappedLines += opening.concat(lines[i]).concat(end);
-        continue;
-      }
-      wrappedLines += opening.concat(lines[i]).concat(end).concat("\\n");
-    }
-    return wrappedLines;
+    return text.replace(this.selection, opening.concat(selection).concat(end));
   }
 
   public String getSelection() {
