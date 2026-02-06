@@ -2,22 +2,26 @@ package org.edu.ntnu.idatt2003.emil;
 
 public class Main {
   public static void main(String[] args) {
-    String text = "text with target and target";
     TextCommand replaceText = new ReplaceTextCommand("target", "replacement");
     ReplaceTextCommand replaceFirstText = new ReplaceFirstTextCommand("target", "replacement");
 
-    System.out.println(replaceText.execute(text));
-    System.out.println(replaceFirstText.execute(text));
+    System.out.println(replaceText.execute("text with target and target"));
+    System.out.println(replaceFirstText.execute("text with target and target"));
 
-    String textWrap = "text to be wrapped";
     TextCommand wrapText = new WrapTextCommand("<p>", "</p>");
-    String textWrapLines = "first line\nsecond line\nthird line";
     WrapTextCommand wrapLinesText = new WrapLinesTextCommand("<p>", "</p>");
-    String textWrapSelection = "text with selection";
     WrapTextCommand wrapSelectionText = new WrapSelectionTextCommand("<p>", "</p>", "selection");
 
-    System.out.println(wrapText.execute(textWrap));
-    System.out.println(wrapLinesText.execute(textWrapLines));
-    System.out.println(wrapSelectionText.execute(textWrapSelection));
+    System.out.println(wrapText.execute("text to be wrapped"));
+    System.out.println(wrapLinesText.execute("first line\nsecond line\nthird line"));
+    System.out.println(wrapSelectionText.execute("text with selection"));
+
+    TextCommand capitalizeText = new CapitalizeTextCommand();
+    CapitalizeTextCommand capitalizeWords = new CapitalizeWordsTextCommand();
+    CapitalizeTextCommand capitalizeSelection = new CapitalizeSelectionTextCommand("selection");
+
+    System.out.println(capitalizeText.execute("text to be capitalized"));
+    System.out.println(capitalizeWords.execute("text to be capitalized"));
+    System.out.println(capitalizeSelection.execute("text with selection and another selection"));
   }
 }
