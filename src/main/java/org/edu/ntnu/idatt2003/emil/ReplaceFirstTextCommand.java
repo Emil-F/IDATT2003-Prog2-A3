@@ -1,9 +1,13 @@
 package org.edu.ntnu.idatt2003.emil;
 
-public class ReplaceFirstTextCommand implements TextCommand {
-  protected String target;
+public class ReplaceFirstTextCommand extends ReplaceTextCommand {
+  public ReplaceFirstTextCommand(String target, String replacement) {
+    super(target, replacement);
+  }
 
+  @Override
   public String execute(String text) {
-    return null;
+    String regex = "\\b" + this.target + "\\b";
+    return text.replaceFirst(regex, replacement);
   }
 }
