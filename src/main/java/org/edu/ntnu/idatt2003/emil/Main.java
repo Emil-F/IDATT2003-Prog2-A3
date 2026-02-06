@@ -29,10 +29,10 @@ public class Main {
 
     List<TextCommand> commands = new ArrayList<>();
     TextCommand capitalizeTextCommand = new CapitalizeTextCommand();
-    commands.add(capitalizeTextCommand);
     TextCommand replaceTextCommand = new ReplaceTextCommand("Hei", "Hallo");
-    commands.add(replaceTextCommand);
     TextCommand wrapTextCommand = new WrapTextCommand("<p>", "</p>");
+    commands.add(capitalizeTextCommand);
+    commands.add(replaceTextCommand);
     commands.add(wrapTextCommand);
     Script script = new Script(commands);
     script.execute("hei");

@@ -7,7 +7,6 @@ public class ReplaceFirstTextCommand extends ReplaceTextCommand {
 
   @Override
   public String execute(String text) {
-    String regex = "\\b" + this.target + "\\b";
-    return text.replaceFirst(regex, replacement);
+    return text.replaceFirst(target, replacement);
   }
 }

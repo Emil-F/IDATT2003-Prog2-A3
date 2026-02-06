@@ -1,5 +1,7 @@
 package org.edu.ntnu.idatt2003.emil;
 
+import java.util.Objects;
+
 public class ReplaceTextCommand implements TextCommand {
   protected String target;
   protected String replacement;
@@ -10,8 +12,7 @@ public class ReplaceTextCommand implements TextCommand {
   }
 
   public String execute(String text) {
-    String regex = "\\b" + this.target + "\\b";
-    return text.replaceAll(regex, replacement);
+    return text.replaceAll(target, replacement);
   }
 
   public String getTarget() {
