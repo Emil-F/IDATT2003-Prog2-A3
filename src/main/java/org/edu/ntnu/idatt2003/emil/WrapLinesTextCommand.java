@@ -12,6 +12,7 @@ public class WrapLinesTextCommand extends WrapTextCommand {
 
   @Override
   public String execute(String text) {
+    System.out.println("Executing WrapLinesTextCommand with: " + text);
     StringBuilder wrappedLines = new StringBuilder();
     List<String> lines = text.lines().collect(Collectors.toCollection(ArrayList::new));
     for (int i = 0; i < lines.size(); i++) {

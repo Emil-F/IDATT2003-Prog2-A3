@@ -10,9 +10,10 @@ public class Script {
   }
 
   public String execute(String text) {
+    System.out.println("Executing Script with: " + text);
     for (TextCommand textCommand : this.textCommands) {
       text = textCommand.execute(text);
-      System.out.println(text);
+      System.out.println("Result: " + text + "\n");
     }
     return text;
   }

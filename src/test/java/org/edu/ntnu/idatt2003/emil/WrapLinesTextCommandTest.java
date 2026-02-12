@@ -15,6 +15,16 @@ class WrapLinesTextCommandTest {
   }
 
   @Test
+  void constructor_throwsWhenOpeningIsNull() {
+    assertThrows(NullPointerException.class, () -> new WrapLinesTextCommand(null, "</p>"));
+  }
+
+  @Test
+  void constructor_throwsWhenEndIsNull() {
+    assertThrows(NullPointerException.class, () -> new WrapLinesTextCommand("<p>", null));
+  }
+
+  @Test
   void execute_wrapsLines() {
     assertEquals("<p>first line\\nsecond line</p>", wrapLinesTextCommand.execute("first line\\nsecond line"));
   }

@@ -7,11 +7,14 @@ public class ReplaceTextCommand implements TextCommand {
   protected String replacement;
 
   public ReplaceTextCommand(String target, String replacement) {
+    Objects.requireNonNull(target, "target is null");
+    Objects.requireNonNull(replacement, "replacement is null");
     this.target = target;
     this.replacement = replacement;
   }
 
   public String execute(String text) {
+    System.out.println("Executing ReplaceTextCommand with: " + text);
     return text.replaceAll(target, replacement);
   }
 

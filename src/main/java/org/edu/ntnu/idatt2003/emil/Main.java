@@ -8,32 +8,40 @@ public class Main {
     TextCommand replaceText = new ReplaceTextCommand("target", "replacement");
     ReplaceTextCommand replaceFirstText = new ReplaceFirstTextCommand("target", "replacement");
 
-    System.out.println(replaceText.execute("text with target and target"));
-    System.out.println(replaceFirstText.execute("text with target and target"));
+    System.out.println("Result: " + replaceText.execute("text with target and target") + "\n");
+    System.out.println("Result: " + replaceFirstText.execute("text with target and target") + "\n");
 
-    TextCommand wrapText = new WrapTextCommand("<p>", "</p>");
-    WrapTextCommand wrapLinesText = new WrapLinesTextCommand("<p>", "</p>");
-    WrapTextCommand wrapSelectionText = new WrapSelectionTextCommand("<p>", "</p>", "selection");
+    try {
+      TextCommand wrapText = new WrapTextCommand("<p>", "</p>");
+      WrapTextCommand wrapLinesText = new WrapLinesTextCommand("<p>", "</p>");
+      WrapTextCommand wrapSelectionText = new WrapSelectionTextCommand("<p>", "</p>", "selection");
+      System.out.println("Result: " + wrapText.execute("text to be wrapped") + "\n");
+      System.out.println("Result: " + wrapLinesText.execute("first line\nsecond line\nthird line") + "\n");
+      System.out.println("Result: " + wrapSelectionText.execute("text with selection") + "\n");
+    } catch (NullPointerException e) {
+      System.err.println(e.getMessage());
+    }
 
-    System.out.println(wrapText.execute("text to be wrapped"));
-    System.out.println(wrapLinesText.execute("first line\nsecond line\nthird line"));
-    System.out.println(wrapSelectionText.execute("text with selection"));
 
     TextCommand capitalizeText = new CapitalizeTextCommand();
     CapitalizeTextCommand capitalizeWords = new CapitalizeWordsTextCommand();
     CapitalizeTextCommand capitalizeSelection = new CapitalizeSelectionTextCommand("selection");
 
-    System.out.println(capitalizeText.execute("text to be capitalized"));
-    System.out.println(capitalizeWords.execute("text to be capitalized"));
-    System.out.println(capitalizeSelection.execute("text with selection and another selection"));
+    System.out.println("Result: " + capitalizeText.execute("text to be capitalized") + "\n");
+    System.out.println("Result: " + capitalizeWords.execute("text to be capitalized") + "\n");
+    System.out.println("Result: " + capitalizeSelection.execute("text with selection and another selection") + "\n");
 
     List<TextCommand> commands = new ArrayList<>();
-    TextCommand capitalizeTextCommand = new CapitalizeTextCommand();
-    TextCommand replaceTextCommand = new ReplaceTextCommand("Hei", "Hallo");
-    TextCommand wrapTextCommand = new WrapTextCommand("<p>", "</p>");
-    commands.add(capitalizeTextCommand);
-    commands.add(replaceTextCommand);
-    commands.add(wrapTextCommand);
+    try {
+      TextCommand capitalizeTextCommand = new CapitalizeTextCommand();
+      TextCommand replaceTextCommand = new ReplaceTextCommand("Hei", "Hallo");
+      TextCommand wrapTextCommand = new WrapTextCommand("<p>", "</p>");
+      commands.add(capitalizeTextCommand);
+      commands.add(replaceTextCommand);
+      commands.add(wrapTextCommand);
+    } catch (NullPointerException e) {
+      System.err.println(e.getMessage());
+    }
     Script script = new Script(commands);
     script.execute("hei");
   }

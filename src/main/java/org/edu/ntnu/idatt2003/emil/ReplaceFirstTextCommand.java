@@ -7,6 +7,7 @@ public class ReplaceFirstTextCommand extends ReplaceTextCommand {
 
   @Override
   public String execute(String text) {
+    System.out.println("Executing ReplaceFirstTextCommand with: " + text);
     return text.replaceFirst(target, replacement);
   }
 }

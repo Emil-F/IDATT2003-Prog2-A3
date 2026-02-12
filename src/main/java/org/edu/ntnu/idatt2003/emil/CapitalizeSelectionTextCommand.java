@@ -8,6 +8,8 @@ public class CapitalizeSelectionTextCommand extends CapitalizeTextCommand {
   }
 
   public String execute(String text) {
+    System.out.println("Executing CapitalizeSelectionTextCommand with: " + text);
+
     return text.replaceAll(selection, selection.substring(0, 1).toUpperCase() + selection.substring(1));
   }
 

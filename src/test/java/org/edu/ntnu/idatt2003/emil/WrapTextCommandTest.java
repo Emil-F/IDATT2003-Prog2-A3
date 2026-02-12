@@ -15,6 +15,16 @@ class WrapTextCommandTest {
   }
 
   @Test
+  void constructor_throwsWhenOpeningIsNull() {
+    assertThrows(NullPointerException.class, () -> new WrapTextCommand(null, "</p>"));
+  }
+
+  @Test
+  void constructor_throwsWhenEndIsNull() {
+    assertThrows(NullPointerException.class, () -> new WrapTextCommand("<p>", null));
+  }
+
+  @Test
   void execute_wrapsText() {
     assertEquals("<p>text to be wrapped</p>", wrapTextCommand.execute("text to be wrapped"));
   }

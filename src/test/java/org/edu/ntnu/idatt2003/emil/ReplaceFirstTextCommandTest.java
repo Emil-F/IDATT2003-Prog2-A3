@@ -15,6 +15,16 @@ class ReplaceFirstTextCommandTest {
   }
 
   @Test
+  void constructor_throwsWhenTargetIsNull() {
+    assertThrows(NullPointerException.class, () -> new ReplaceFirstTextCommand(null, "replacement"));
+  }
+
+  @Test
+  void constructor_throwsWhenReplacementIsNull() {
+    assertThrows(NullPointerException.class, () -> new ReplaceFirstTextCommand("target", null));
+  }
+
+  @Test
   void execute_onlyReplacesTheFirstTarget() {
     assertEquals("text with replacement and target", replaceFirstTextCommand.execute("text with target and target"));
   }
